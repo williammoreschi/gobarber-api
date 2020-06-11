@@ -1,0 +1,10 @@
+version: '3.7'
+services:
+  postgres:
+    image: postgres
+    container_name: postgres-container
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: docker
+    ports:
+      - 5432:5432
