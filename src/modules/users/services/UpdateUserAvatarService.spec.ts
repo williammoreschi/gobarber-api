@@ -28,11 +28,13 @@ describe('CreateUserAvatar', () => {
   it('should not be able to update image file whith non existing user', async () => {
     const fakeStorageProvider = new FakeStorageProvider();
     const fakeUsersRepository = new FakeUsersRepository();
+
     const updateUserAvatar = new UpdateUserAvatarService(
       fakeUsersRepository,
       fakeStorageProvider,
     );
-    expect(
+
+    await expect(
       updateUserAvatar.execute({
         user_id: 'non-existing-user',
         avatarFileName: 'avatar.jpg',
@@ -66,6 +68,7 @@ describe('CreateUserAvatar', () => {
       user_id: user.id,
       avatarFileName: 'avatar2.jpg',
     });
+
     expect(deleteFile).toHaveBeenCalledWith('avatar.jpg');
     expect(user.avatar).toBe('avatar2.jpg');
   });

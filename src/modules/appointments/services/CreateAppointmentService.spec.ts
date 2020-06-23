@@ -5,9 +5,11 @@ import CreateAppointmentService from '@modules/appointments/services/CreateAppoi
 describe('CreateAppointment', () => {
   it('should be able to create a new appointment', async () => {
     const fakeAppointmentsRepository = new FakeAppointmentsRepository();
+
     const createAppointment = new CreateAppointmentService(
       fakeAppointmentsRepository,
     );
+
     const appointment = await createAppointment.execute({
       date: new Date(),
       provider_id: '123',
@@ -18,6 +20,7 @@ describe('CreateAppointment', () => {
 
   it('should not be able to create a new appointment on the same time', async () => {
     const fakeAppointmentsRepository = new FakeAppointmentsRepository();
+
     const createAppointment = new CreateAppointmentService(
       fakeAppointmentsRepository,
     );
@@ -29,7 +32,7 @@ describe('CreateAppointment', () => {
       provider_id: '123',
     });
 
-    expect(
+    await expect(
       createAppointment.execute({
         date: appointmentDate,
         provider_id: '123',
