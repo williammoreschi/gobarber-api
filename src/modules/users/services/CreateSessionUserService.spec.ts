@@ -4,19 +4,25 @@ import FakeHashProvider from '@modules/users/providers/HashProvider/fakes/FakeHa
 import CreateSessionUserService from '@modules/users/services/CreateSessionUserService';
 import CreateUserService from '@modules/users/services/CreateUserService';
 
-describe('CreateSessionUser', () => {
-  it('should be able to create a the user session', async () => {
-    const fakeUsersRepository = new FakeUsersRepository();
-    const fakeHashProvider = new FakeHashProvider();
-    const createUser = new CreateUserService(
-      fakeUsersRepository,
-      fakeHashProvider,
-    );
-    const createSessionUser = new CreateSessionUserService(
-      fakeUsersRepository,
-      fakeHashProvider,
-    );
+let fakeUsersRepository: FakeUsersRepository;
+let fakeHashProvider: FakeHashProvider;
+let createUser: CreateUserService;
+let createSessionUser: CreateSessionUserService;
 
+describe('CreateSessionUser', () => {
+  beforeEach(() => {
+    fakeUsersRepository = new FakeUsersRepository();
+    fakeHashProvider = new FakeHashProvider();
+
+    createUser = new CreateUserService(fakeUsersRepository, fakeHashProvider);
+
+    createSessionUser = new CreateSessionUserService(
+      fakeUsersRepository,
+      fakeHashProvider,
+    );
+  });
+
+  it('should be able to create a the user session', async () => {
     const user = await createUser.excute({
       name: 'John Doe',
       email: 'johndoe@email.com',
@@ -32,14 +38,6 @@ describe('CreateSessionUser', () => {
   });
 
   it('should not be able to create a the session if does not user exists', async () => {
-    const fakeUsersRepository = new FakeUsersRepository();
-    const fakeHashProvider = new FakeHashProvider();
-
-    const createSessionUser = new CreateSessionUserService(
-      fakeUsersRepository,
-      fakeHashProvider,
-    );
-
     await expect(
       createSessionUser.excute({
         email: 'johndoe@email.com',
@@ -49,17 +47,6 @@ describe('CreateSessionUser', () => {
   });
 
   it('should not be able to create a the session if does password incorrect', async () => {
-    const fakeUsersRepository = new FakeUsersRepository();
-    const fakeHashProvider = new FakeHashProvider();
-    const createUser = new CreateUserService(
-      fakeUsersRepository,
-      fakeHashProvider,
-    );
-    const createSessionUser = new CreateSessionUserService(
-      fakeUsersRepository,
-      fakeHashProvider,
-    );
-
     await createUser.excute({
       name: 'John Doe',
       email: 'johndoe@email.com',
