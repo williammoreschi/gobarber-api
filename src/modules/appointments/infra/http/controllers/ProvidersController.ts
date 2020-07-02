@@ -4,7 +4,7 @@ import { container } from 'tsyringe';
 import ListProvidersService from '@modules/appointments/services/ListProvidersService';
 
 class ProvidersController {
-  public async show(request: Request, response: Response): Promise<Response> {
+  public async index(request: Request, response: Response): Promise<Response> {
     const user_id = request.user.id;
 
     const listProviders = container.resolve(ListProvidersService);
