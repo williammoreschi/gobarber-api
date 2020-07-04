@@ -13,13 +13,6 @@ const uploadMulter = multer(uploadConfig);
 const usersContoller = new UsersController();
 const userAvatarController = new UserAvatarController();
 
-// usersRouter.get('/', async (request, response) => {
-//  const users = await usersRespository.find({
-//    select: ['id', 'name', 'email'],
-//  });
-//  return response.json(users);
-// });
-
 usersRouter.post('/', usersContoller.create);
 
 usersRouter.patch(
