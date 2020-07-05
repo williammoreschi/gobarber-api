@@ -2,9 +2,16 @@ version: '3.7'
 services:
   postgres:
     image: postgres
-    container_name: postgres-container
+    container_name: postgres-gobarber
     restart: always
     environment:
       POSTGRES_PASSWORD: docker
     ports:
       - 5432:5432
+  mongo:
+    image: mongo
+    container_name: mongo-gobarber
+    restart: always
+    ports:
+      - 27017:27017
+
