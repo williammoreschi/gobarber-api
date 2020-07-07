@@ -5,3 +5,4 @@ dist
 yarn-error.log
 tmp/*
 !tmp/.gitkeep
+ormconfig.json
