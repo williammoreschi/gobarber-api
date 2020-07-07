@@ -8,7 +8,10 @@ class SessionsController {
 
     const CreateSessionUser = container.resolve(CreateSessionUserService);
 
-    const { user, token } = await CreateSessionUser.excute({ email, password });
+    const { user, token } = await CreateSessionUser.execute({
+      email,
+      password,
+    });
     return response.json({ user, token });
   }
 }

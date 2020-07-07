@@ -23,13 +23,13 @@ describe('CreateSessionUser', () => {
   });
 
   it('should be able to create a the user session', async () => {
-    const user = await createUser.excute({
+    const user = await createUser.execute({
       name: 'John Doe',
       email: 'johndoe@email.com',
       password: '147258369',
     });
 
-    const response = await createSessionUser.excute({
+    const response = await createSessionUser.execute({
       email: 'johndoe@email.com',
       password: '147258369',
     });
@@ -39,7 +39,7 @@ describe('CreateSessionUser', () => {
 
   it('should not be able to create a the session if does not user exists', async () => {
     await expect(
-      createSessionUser.excute({
+      createSessionUser.execute({
         email: 'johndoe@email.com',
         password: '147258369',
       }),
@@ -47,14 +47,14 @@ describe('CreateSessionUser', () => {
   });
 
   it('should not be able to create a the session if does password incorrect', async () => {
-    await createUser.excute({
+    await createUser.execute({
       name: 'John Doe',
       email: 'johndoe@email.com',
       password: '147258369',
     });
 
     await expect(
-      createSessionUser.excute({
+      createSessionUser.execute({
         email: 'johndoe@email.com',
         password: '147258368',
       }),

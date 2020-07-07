@@ -33,7 +33,7 @@ describe('ResetPassoword', () => {
 
     const generateHash = jest.spyOn(fakeHashProvider, 'generateHash');
 
-    await resetPassoword.excute({
+    await resetPassoword.execute({
       password: '123456',
       token,
     });
@@ -46,7 +46,7 @@ describe('ResetPassoword', () => {
 
   it('should not be able to reset the password with non-existing token', async () => {
     await expect(
-      resetPassoword.excute({
+      resetPassoword.execute({
         password: '123456',
         token: 'non-existing-token',
       }),
@@ -59,7 +59,7 @@ describe('ResetPassoword', () => {
     );
 
     await expect(
-      resetPassoword.excute({
+      resetPassoword.execute({
         password: '123456',
         token: userToken.token,
       }),
@@ -81,7 +81,7 @@ describe('ResetPassoword', () => {
     });
 
     await expect(
-      resetPassoword.excute({
+      resetPassoword.execute({
         password: '123456',
         token,
       }),

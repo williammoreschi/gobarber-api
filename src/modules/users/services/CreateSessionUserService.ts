@@ -28,7 +28,7 @@ class CreateSessionUserService {
     private hashProvider: IHashProvider,
   ) {}
 
-  public async excute({ email, password }: IRequest): Promise<IResponse> {
+  public async execute({ email, password }: IRequest): Promise<IResponse> {
     const user = await this.usersRepository.findByEmail(email);
 
     const errorMensage = 'Incorrect email/password combination.';

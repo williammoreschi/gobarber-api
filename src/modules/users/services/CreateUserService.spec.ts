@@ -15,7 +15,7 @@ describe('CreateUser', () => {
     createUser = new CreateUserService(fakeUsersRepository, fakeHashProvider);
   });
   it('should be able to create a new user', async () => {
-    const user = await createUser.excute({
+    const user = await createUser.execute({
       name: 'John Doe',
       email: 'johndoe@email.com',
       password: '123321',
@@ -25,14 +25,14 @@ describe('CreateUser', () => {
   });
 
   it('should not be able to create a new user with same email from another', async () => {
-    await createUser.excute({
+    await createUser.execute({
       name: 'John Doe',
       email: 'johndoe@email.com',
       password: '123321',
     });
 
     await expect(
-      createUser.excute({
+      createUser.execute({
         name: 'John Doe',
         email: 'johndoe@email.com',
         password: '123321',

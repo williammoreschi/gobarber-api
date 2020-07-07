@@ -8,7 +8,7 @@ class ResetPasswordController {
     const { password, token } = request.body;
     const resetPassowordService = container.resolve(ResetPassowordService);
 
-    await resetPassowordService.excute({
+    await resetPassowordService.execute({
       token,
       password,
     });

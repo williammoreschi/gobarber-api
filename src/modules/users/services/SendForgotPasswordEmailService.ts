@@ -23,7 +23,7 @@ class SendForgotPasswordEmailService {
     private userTokensRepository: IUserTokensRepository,
   ) {}
 
-  public async excute({ email }: IRequest): Promise<void> {
+  public async execute({ email }: IRequest): Promise<void> {
     const user = await this.usersRepository.findByEmail(email);
 
     if (!user) {
