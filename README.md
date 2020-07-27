@@ -24,14 +24,14 @@
 
 # Painel do Prestador
 **RF**
-- O usário deve poder listar seus agendamentos de um dia específico;
-- O prestador deve receber uma notifiação sempre que houver um novo agendamento;
+- O usuário deve poder listar seus agendamentos de um dia específico;
+- O prestador deve receber uma notificação sempre que houver um novo agendamento;
 - O prestador deve poder visualizar as notificações não lidas;
 
 **RFN**
-- Os agendamentos do prestador no dia devem ser armazendadas em cache;
-- As notificações do prestador devem ser armazendas no MongoDB;
-- As notificaçòes do prestador devem enviadas em tempo-real utilizando Socket.io;
+- Os agendamentos do prestador no dia devem ser armazenadas em cache;
+- As notificações do prestador devem ser armazenadas no MongoDB;
+- As notificações do prestador devem enviadas em tempo-real utilizando Socket.io;
 -
 **RN**
 - A notificação deve ter um status de lida ou não-lida para que o prestado possa controlar;
@@ -45,11 +45,11 @@
 - O usuário deve poder realizar um novo agendamento com um prestador;
 
 **RFN**
-- A listagem de prestadores deve ser armazendo em cache;
+- A listagem de prestadores deve ser armazenado em cache;
 
 **RN**
 - Cada agendamento deve durar 1h exatamente;
-- Os agendamento devem estar disponível entre 8h às 18h (Primerio às 8h, e último ás 17h);
+- Os agendamento devem estar disponível entre 8h às 18h (Primeiro às 8h, e último ás 17h);
 - O usuário não pode agendar em um horário que já ocupado;
 - O usuário não pode agendar em um horário que já passou;
 - O usuário não pode agendar em um horário consigo mesmo;

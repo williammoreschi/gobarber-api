@@ -14,7 +14,7 @@ describe('CreateNotification', () => {
 
   it('should be able to create a new user', async () => {
     const notification = await createNotification.execute({
-      content: 'Teste notication day',
+      content: 'Teste notification day',
       recipient_id: 'provider-id',
     });
 

@@ -7,11 +7,11 @@ import ProfileController from '@modules/users/infra/http/controllers/ProfileCont
 
 const profileRouter = Router();
 
-const profileContoller = new ProfileController();
+const profileController = new ProfileController();
 
 profileRouter.use(ensureAuthenticated);
 
-profileRouter.get('/', profileContoller.show);
+profileRouter.get('/', profileController.show);
 
 profileRouter.put(
   '/',
@@ -21,10 +21,10 @@ profileRouter.put(
       email: Joi.string().email(),
       old_password: Joi.string(),
       password: Joi.string(),
-      password_confimation: Joi.string().valid(Joi.ref('password')),
+      password_confirmation: Joi.string().valid(Joi.ref('password')),
     },
   }),
-  profileContoller.update,
+  profileController.update,
 );
 
 export default profileRouter;

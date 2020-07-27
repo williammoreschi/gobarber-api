@@ -36,15 +36,15 @@ class UpdateProfileService {
     if (!user) {
       throw new AppError('User not found');
     }
-    const userWithUpdadteEmail = await this.usersRepository.findByEmail(email);
+    const userWithUpdateEmail = await this.usersRepository.findByEmail(email);
 
-    if (userWithUpdadteEmail && userWithUpdadteEmail.id !== user_id) {
+    if (userWithUpdateEmail && userWithUpdateEmail.id !== user_id) {
       throw new AppError('E-mail already in use.');
     }
 
     if (password && !old_password) {
       throw new AppError(
-        'You need to inform the old password to set a new passoword',
+        'You need to inform the old password to set a new password',
       );
     }
 

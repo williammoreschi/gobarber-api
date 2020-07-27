@@ -15,15 +15,15 @@ class S3StorageProvider implements IStorageProvider {
   }
 
   public async saveFile(file: string): Promise<string> {
-    const orginalPath = path.resolve(uploadConfig.tpmFolder, file);
+    const originalPath = path.resolve(uploadConfig.tpmFolder, file);
 
-    const contentType = mime.getType(orginalPath);
+    const contentType = mime.getType(originalPath);
 
     if (!contentType) {
       throw new Error('File not found');
     }
 
-    const fileContent = await fs.promises.readFile(orginalPath);
+    const fileContent = await fs.promises.readFile(originalPath);
 
     await this.client
       .putObject({
@@ -35,7 +35,7 @@ class S3StorageProvider implements IStorageProvider {
       })
       .promise();
 
-    await fs.promises.unlink(orginalPath);
+    await fs.promises.unlink(originalPath);
 
     return file;
   }

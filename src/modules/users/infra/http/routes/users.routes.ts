@@ -11,7 +11,7 @@ import UserAvatarController from '@modules/users/infra/http/controllers/UserAvat
 const usersRouter = Router();
 const uploadMulter = multer(uploadConfig.multer);
 
-const usersContoller = new UsersController();
+const usersController = new UsersController();
 const userAvatarController = new UserAvatarController();
 
 usersRouter.post(
@@ -23,7 +23,7 @@ usersRouter.post(
       password: Joi.string().required(),
     },
   }),
-  usersContoller.create,
+  usersController.create,
 );
 
 usersRouter.patch(

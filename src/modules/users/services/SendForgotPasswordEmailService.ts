@@ -32,7 +32,7 @@ class SendForgotPasswordEmailService {
 
     const { token } = await this.userTokensRepository.generate(user.id);
 
-    const forgotPassworTemplate = path.resolve(
+    const forgotPasswordTemplate = path.resolve(
       __dirname,
       '..',
       'views',
@@ -46,7 +46,7 @@ class SendForgotPasswordEmailService {
       },
       subject: '[Gobarber] Recuperação de senha',
       templateData: {
-        file: forgotPassworTemplate,
+        file: forgotPasswordTemplate,
         variables: {
           name: user.name,
           link: `${process.env.APP_WEB_URL}/reset-password?token=${token}`,

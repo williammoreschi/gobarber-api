@@ -8,7 +8,7 @@ import IAppointmentsRepository from '@modules/appointments/repositories/IAppoint
 import INotificationsRepository from '@modules/notifications/repositories/INotificationsRepository';
 import ICacheProvider from '@shared/container/providers/CacheProvider/models/ICacheProvider';
 
-interface IReqest {
+interface IRequest {
   provider_id: string;
   user_id: string;
   date: Date;
@@ -29,7 +29,7 @@ class CreateAppointmentService {
     provider_id,
     date,
     user_id,
-  }: IReqest): Promise<Appointment> {
+  }: IRequest): Promise<Appointment> {
     const appointmentDate = startOfHour(date);
 
     if (isBefore(appointmentDate, Date.now())) {
@@ -38,7 +38,7 @@ class CreateAppointmentService {
 
     if (getHours(appointmentDate) < 8 || getHours(appointmentDate) > 17) {
       throw new AppError(
-        'You can only create appontiment between 8am and 5pm.',
+        'You can only create appointment between 8am and 5pm.',
       );
     }
 

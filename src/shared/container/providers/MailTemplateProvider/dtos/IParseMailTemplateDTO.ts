@@ -1,7 +1,7 @@
 interface ITemplateVariable {
   [key: string]: string | number;
 }
-export default interface IParseMailTeplateDTO {
+export default interface IParseMailTemplateDTO {
   file: string;
   variables: ITemplateVariable;
 }

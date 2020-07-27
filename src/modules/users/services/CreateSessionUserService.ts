@@ -31,9 +31,9 @@ class CreateSessionUserService {
   public async execute({ email, password }: IRequest): Promise<IResponse> {
     const user = await this.usersRepository.findByEmail(email);
 
-    const errorMensage = 'Incorrect email/password combination.';
+    const errorMessage = 'Incorrect email/password combination.';
     if (!user) {
-      throw new AppError(errorMensage, 401);
+      throw new AppError(errorMessage, 401);
     }
 
     const passwordMatched = await this.hashProvider.compareHash(
@@ -42,7 +42,7 @@ class CreateSessionUserService {
     );
 
     if (!passwordMatched) {
-      throw new AppError(errorMensage, 401);
+      throw new AppError(errorMessage, 401);
     }
 
     const { expiresIn, secret } = authConfig.jwt;
