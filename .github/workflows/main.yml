@@ -45,4 +45,4 @@ jobs:
             cd /home/app/gobarber-api
             yarn
             ./node_modules/.bin/typeorm migrations:run
-            pm2 restart nome-do-servico
+            pm2 restart gobarber-api
