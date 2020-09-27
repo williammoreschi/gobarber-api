@@ -12,8 +12,8 @@ export default {
 
   default: {
     from: {
-      email: 'william@moreschi.com.br',
-      name: 'William Moreschi',
+      email: process.env.MAIL_FROM_EMAIL,
+      name: process.env.MAIL_FROM_NAME,
     },
   },
 } as IMailConfig;
