@@ -29,7 +29,7 @@ class S3StorageProvider implements IStorageProvider {
       .putObject({
         Bucket: uploadConfig.config.aws.bucket,
         Key: file,
-        ACL: 'public_read',
+        ACL: 'public-read',
         Body: fileContent,
         ContentType: contentType,
       })
